@@ -14,6 +14,20 @@ public class DiamondExercises {
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
 
+        int blankSpaces = n-1;
+        int numberOfAsterisks = 1;
+
+        for(int i = n; i > 0; i--){
+            for( int j = blankSpaces; j > 0; j--){
+                System.out.print(" ");
+            }
+            for( int j = numberOfAsterisks; j > 0; j--){
+                System.out.print("*");
+            }
+            System.out.println();
+            blankSpaces-=1;
+            numberOfAsterisks+=2;
+        }
     }
 
 //    Diamond
@@ -24,6 +38,33 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
+        int blankSpaces = n;
+        int numberOfAsterisks = -1;
+
+        for(int i = n; i > 0; i--){
+            blankSpaces-=1;
+            numberOfAsterisks+=2;
+
+            for( int j = blankSpaces; j > 0; j--){
+                System.out.print(" ");
+            }
+            for( int j = numberOfAsterisks; j > 0; j--){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        for(int i = 1; i < n; i++){
+            blankSpaces+=1;
+            numberOfAsterisks-=2;
+            for( int j = 0; j < blankSpaces; j++){
+                System.out.print(" ");
+            }
+            for( int j = 0; j < numberOfAsterisks; j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
 
     }
 
@@ -36,6 +77,32 @@ public class DiamondExercises {
 //            ***
 //             *
     private static void drawADiamondWithYourName(int n) {
+        drawADiamondWithYourName(n, 1, 1);
+    }
 
+    private static void drawADiamondWithYourName(int n, int depth, int numberOfAsterisks) {
+        if(depth % n == 0){
+            System.out.print("Ella");
+        }else{
+            int blankSpaces = n - depth;
+            for( int i = 0; i < blankSpaces; i++){
+                System.out.print(" ");
+            }
+            for( int i = 0; i < numberOfAsterisks; i++){
+                System.out.print("*");
+            }
+
+            System.out.println();
+            drawADiamondWithYourName(n, depth +1, numberOfAsterisks+2);
+            System.out.println();
+
+            for( int i = 0; i < blankSpaces; i++){
+                System.out.print(" ");
+            }
+            for( int i = 0; i < numberOfAsterisks; i++){
+                System.out.print("*");
+            }
+
+        }
     }
 }
